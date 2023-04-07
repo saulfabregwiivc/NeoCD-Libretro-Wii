@@ -133,6 +133,6 @@ void Libretro::Variables::update(bool needReset)
 			nFrameskip = 6;
 	}
     
-        if (needReset)
+    if (needReset)
         neocd->reset();
 }
