@@ -682,7 +682,7 @@ bool path_is_absolute(const char *path)
    return ( string_starts_with_size(path,     "\\\\", STRLEN_CONST("\\\\"))
          || string_starts_with_size(path + 1, ":/",   STRLEN_CONST(":/")) 
          || string_starts_with_size(path + 1, ":\\",  STRLEN_CONST(":\\")));
-#elif defined(__wiiu__) || defined(VITA)
+#elif defined(__wii__) || defined(VITA)
    {
       const char *seperator = strchr(path, ':');
       return (seperator && (seperator[1] == '/'));

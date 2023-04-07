@@ -57,7 +57,7 @@
 #  include <dirent.h>
 #  endif
 #  include <unistd.h>
-#  if defined(WIIU)
+#  if defined(WII)
 #  include <malloc.h>
 #  endif
 #endif
@@ -468,7 +468,7 @@ libretro_vfs_implementation_file *retro_vfs_file_open_impl(
          if (stream->fp)
             setvbuf(stream->fp, stream->buf, _IOFBF, 0x10000);
       }
-#elif defined(WIIU)
+#elif defined(WII)
       if (stream->scheme != VFS_SCHEME_CDROM)
       {
          const int bufsize = 128 * 1024;
@@ -972,7 +972,7 @@ int retro_vfs_stat_impl(const char *path, int32_t *size)
 
 #if defined(VITA)
 #define path_mkdir_error(ret) (((ret) == SCE_ERROR_ERRNO_EEXIST))
-#elif defined(PSP) || defined(PS2) || defined(_3DS) || defined(WIIU) || defined(SWITCH)
+#elif defined(PSP) || defined(PS2) || defined(_3DS) || defined(WII) || defined(SWITCH)
 #define path_mkdir_error(ret) ((ret) == -1)
 #else
 #define path_mkdir_error(ret) ((ret) < 0 && errno == EEXIST)
@@ -999,7 +999,7 @@ int retro_vfs_mkdir_impl(const char *dir)
    int ret = sceIoMkdir(dir, 0777);
 #elif defined(__QNX__)
    int ret = mkdir(dir, 0777);
-#elif defined(GEKKO) || defined(WIIU)
+#elif defined(GEKKO) || defined(WII)
    /* On GEKKO platforms, mkdir() fails if
     * the path has a trailing slash. We must
     * therefore remove it. */
