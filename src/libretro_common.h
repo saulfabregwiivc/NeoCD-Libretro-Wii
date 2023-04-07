@@ -57,6 +57,9 @@ struct Globals
     bool cdSpeedHack{ false };
 
     bool perContentSaves{ false };
+    
+    // Frameskip
+    bool frameskip{ false };
 };
 
 extern LibretroCallbacks libretro;
