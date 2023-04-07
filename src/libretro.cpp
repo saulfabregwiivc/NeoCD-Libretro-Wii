@@ -245,6 +245,9 @@ void retro_run(void)
 
     // Update inputs
     Libretro::Input::update();
+	
+    // Frameskip
+    ForceFrameStep(nCurrentFrame % nFrameskip == 0);
 
     // Skip CD loading
     if (neocd->cdSectorDecodedThisFrame && globals.skipCDLoading)
