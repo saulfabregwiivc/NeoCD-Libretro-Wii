@@ -12,6 +12,7 @@ static const char* const BIOS_VARIABLE = "neocd_bios";
 static const char* const SPEEDHACK_VARIABLE = "neocd_cdspeedhack";
 static const char* const LOADSKIP_VARIABLE = "neocd_loadskip";
 static const char* const PER_CONTENT_SAVES_VARIABLE = "neocd_per_content_saves";
+static const char* const FRAMESKIP_VARIABLE = "neocd_frameskip";
 
 // All core variables
 static std::vector<retro_variable> variables;
@@ -43,6 +44,8 @@ void Libretro::Variables::init()
     variables.emplace_back(retro_variable{ LOADSKIP_VARIABLE, "Skip CD Loading; On|Off" });
 
     variables.emplace_back(retro_variable{ PER_CONTENT_SAVES_VARIABLE, "Per-Game Saves (Restart); Off|On" });
+    
+    variables.emplace_back(retro_variable{ FRAMESKIP_VARIABLE, "Frameskip; 0|1|2|3|4|5" });
 
     variables.emplace_back(retro_variable{ nullptr, nullptr });
 
@@ -112,7 +115,24 @@ void Libretro::Variables::update(bool needReset)
 
     if (libretro.environment(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
         globals.perContentSaves = strcmp(var.value, "On") ? false : true;
-
-    if (needReset)
+    
+    var.key = FRAMESKIP_VARIABLE;
+	if (libretro.environment(RETRO_ENVIRONMENT_GET_VARIABLE, &var) var.value)
+	{
+		if (strcmp(var.value, "0") == 0)
+			nFrameskip = 1;
+		else if (strcmp(var.value, "1") == 0)
+			nFrameskip = 2;
+		else if (strcmp(var.value, "2") == 0)
+			nFrameskip = 3;
+		else if (strcmp(var.value, "3") == 0)
+			nFrameskip = 4;
+		else if (strcmp(var.value, "4") == 0)
+			nFrameskip = 5;
+		else if (strcmp(var.value, "5") == 0)
+			nFrameskip = 6;
+	}
+    
+        if (needReset)
         neocd->reset();
 }
