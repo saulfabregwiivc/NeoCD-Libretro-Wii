@@ -1,5 +1,5 @@
 
-# NeoCD-Libretro
+# NeoCD-Libretro Wii
 
 ## Introduction
 
@@ -97,6 +97,7 @@ NeoCD accepts as input a cue sheet file (CUE) or a MAME CHD file. CUE images can
 * x64 / Windows / GCC 10.2
 * x64 / Arch Linux / GCC 11.1
 * Raspberry Pi 3 / Arch Linux / GCC 8.2
+* Nintendo Wii
 
 ## Known problems
 
