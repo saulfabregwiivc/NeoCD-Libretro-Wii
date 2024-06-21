@@ -196,8 +196,8 @@ else ifeq ($(platform), wii)
    CC = $(DEVKITPPC)/bin/powerpc-eabi-gcc$(EXE_EXT)
    CXX = $(DEVKITPPC)/bin/powerpc-eabi-g++$(EXE_EXT)
    AR = $(DEVKITPPC)/bin/powerpc-eabi-ar$(EXE_EXT)
-   CFLAGS += -DGEKKO -DHW_RVL -DWII -mrvl -mcpu=750 -meabi -mhard-float  -DSYNC_CDROM=1 -D_BSD_SOURCE
-   CXXFLAGS += -DGEKKO -DHW_RVL -DWII -mrvl -mcpu=750 -meabi -mhard-float  -DSYNC_CDROM=1 -D_BSD_SOURCE
+   CFLAGS += -DGEKKO -DHW_RVL -DWII -mcpu=750 -meabi -mhard-float  -DSYNC_CDROM=1 -D_BSD_SOURCE
+   CXXFLAGS += -DGEKKO -DHW_RVL -DWII -mcpu=750 -meabi -mhard-float  -DSYNC_CDROM=1 -D_BSD_SOURCE
    STATIC_LINKING=1
 else ifeq ($(platform), ctr)
    TARGET := $(TARGET_NAME)_libretro_$(platform).a
